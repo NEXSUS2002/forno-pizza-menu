@@ -1,0 +1,23 @@
+{
+  "name": "Forno Pizza Menu",
+  "short_name": "Forno",
+  "description": "Authentic Italian Cuisine, all organic, all delicious.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5e6c8",
+  "theme_color": "#f5e6c8",
+  "icons": [
+    {
+      "src": "/logo-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

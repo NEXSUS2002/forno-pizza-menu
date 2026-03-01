@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; /*1rem = 10px*/
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+:root {
+  --Neutral-Dough-Cream: #fdfaf4;
+  --Primary-main: #f5e6c8;
+  --text-primary: #1c1c1c;
+  --text-secondary: #333333;
+  --primary-card-color: #f8eed9;
+  --Accent-oven-red: #c0392b;
+  --Accent-oven-red-tint: hsla(6, 63%, 46%, 0.2);
+  --accent-olive-green: #6b8e23;
+  --accent-olive-green-tint: hsla(80, 30%, 30%, 0.2);
+  --btn-primary: #6b8e23;
+  --btn-text-primary: #fdfaf4;
+  --btn-primary-hover: #556b2f;
+  --btn-disabled: #cccccc;
+
+  /* FLUID TYPOGRAPHY — 62.5% ROOT SAFE */
+
+  --h1-font-size: clamp(2.4rem, 2rem + 1.2vw, 3.2rem);
+  --h2-font-size: clamp(2rem, 1.7rem + 1vw, 2.6rem);
+  --h3-font-size: clamp(1.8rem, 1.6rem + 0.8vw, 2.2rem);
+
+  --p-font-size: clamp(1.4rem, 1.3rem + 0.4vw, 1.6rem);
+  --small-font-size: clamp(1.2rem, 1.15rem + 0.3vw, 1.4rem);
+
+  --bigger-font-size: clamp(3.6rem, 3rem + 1.8vw, 5.6rem);
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: var(--Neutral-Dough-Cream);
+  color: var(--text-primary);
+}
+
+/* App.css Layout Style */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main-content {
+  flex: 1;
+  /* max-width: 100rem; */
+  margin: 0 auto;
+  padding: 4rem;
+  width: 100%;
+}
+
+/* Header Component Styles */
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.logo {
+  width: 20rem;
+  height: 20rem;
+}
+.menu-title-wrapper {
+  display: inline-block;
+  border-top: 1px solid var(--text-primary);
+  border-bottom: 1px solid var(--text-primary);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+.menu-title {
+  font-family: "Playfair Display", serif;
+  font-size: var(--h1-font-size);
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+.menu-description {
+  color: var(--text-secondary);
+  font-size: var(--p-font-size);
+  max-width: 50rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Pizza Grid Styles */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .menu-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Pizza Card Styles */
+.pizza-card {
+  background-color: var(--primary-card-color);
+  border-radius: 1.2rem;
+  padding: 1.6rem;
+  display: flex;
+  gap: 1.6rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease-in-out;
+}
+.pizza-card:hover {
+  transform: translateY(-5px);
+}
+/* Conditional CSS class for graying out sold-out items */
+.pizza-card.sold-out {
+  opacity: 0.7;
+  filter: grayscale(0.3);
+}
+.pizza-img {
+  width: clamp(10rem, 25vw, 14rem);
+  height: clamp(10rem, 25vw, 14rem);
+  border-radius: 0.8rem;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.pizza-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.pizza-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+.pizza-name {
+  font-family: "Playfair Display", serif;
+  font-size: var(--h2-font-size);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+.ingredients {
+  font-size: var(--small-font-size);
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 1.2rem;
+}
+.pizza-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+}
+.price {
+  font-size: var(--h3-font-size);
+  color: var(--accent-olive-green);
+  font-weight: 700;
+}
+.price.sold-out-text {
+  color: var(--accent-olive-green);
+}
+
+/* Badges & Buttons */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  font-size: var(--small-font-size);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge.available {
+  background-color: var(--accent-olive-green-tint);
+  color: var(--accent-olive-green);
+}
+.badge.sold-out {
+  background-color: var(--Accent-oven-red-tint);
+  color: var(--Accent-oven-red);
+}
+.btn {
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
+  border: none;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--small-font-size);
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+}
+.btn-primary {
+  background-color: var(--btn-primary);
+  color: var(--btn-text-primary);
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--btn-primary-hover);
+}
+.btn-disabled {
+  background-color: var(--btn-disabled);
+  cursor: not-allowed;
+}
+
+/* Out of Ordee Box */
+.out-of-order {
+  background-color: var(--primary-card-color);
+  border: 1px solid var(--Accent-oven-red);
+  border-radius: 0.8rem;
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  margin: 0 auto;
+}
+.icon-circle {
+  background-color: var(--Accent-oven-red-tint);
+  width: 6.4rem;
+  height: 6.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.closed-text {
+  font-size: var(--p-font-size);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: var(--Primary-main);
+  padding: 2.4rem;
+  text-align: center;
+}
+.footer-text {
+  font-size: var(--small-font-size);
+  color: var(--text-primary);
+  margin-bottom: 1.2rem;
+}
+.footer-text strong {
+  font-weight: 700;
+}
+.copyright {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* Dev Toggle Button (Just for testing) */
+.dev-toggle {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: #333;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: var(--small-font-size);
+  z-index: 1000;
+}
